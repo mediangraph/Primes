@@ -22,7 +22,7 @@ public class SpiralToArrayTest  {
                         {12,  3,  4,  5, 18},
                         {13,  14, 15, 16, 17}
                 };
-        SpiralToArray sta = new SpiralToArray(dim, null);
+        SpiralToArray sta = new SpiralToArray(dim);
         //Act
         Pixel[][] output = sta.GetArray();
         //Assert
@@ -38,7 +38,8 @@ public class SpiralToArrayTest  {
     public void RunSpiralToArrayWithSpecialNumbers(){
         int dim = 9;
         List<Integer> specials = Arrays.asList(3, 5, 7, 10);
-        SpiralToArray sta = new SpiralToArray(dim, specials);
+        SpiralToArray sta = new SpiralToArray(dim);
+        sta.SetSpecialNumbers(specials);
         //Act
         Pixel[][] output = sta.GetArray();
         //Assert

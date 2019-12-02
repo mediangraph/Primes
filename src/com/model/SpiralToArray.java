@@ -1,14 +1,12 @@
 package com.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpiralToArray {
-
+public class SpiralToArray implements ISpiralToArray {
 
     private List<Integer> specialNumbers;
-    private int dimention;
+    private int dimension;
     //y = -1 (Up)
     //x = 1 (Right)
     //y = 1 (Down)
@@ -16,23 +14,19 @@ public class SpiralToArray {
     private int currentDirectionX = 0;
     private int currentDirectionY = -1;
 
-    public SpiralToArray(int dimention, List<Integer> specialNumbers){
-        if (specialNumbers == null) {
-            this.specialNumbers = new ArrayList<Integer>();
-        } else {
-            this.specialNumbers = specialNumbers;
-        }
-        this.dimention = dimention;
+    public SpiralToArray(int dimension){
+        this.specialNumbers = new ArrayList<>();
+        this.dimension = dimension;
     }
 
     public Pixel[][] GetArray(){
-        Pixel[][] array = new Pixel[dimention][dimention];
+        Pixel[][] array = new Pixel[dimension][dimension];
         int increase = 1;
-        int X = (dimention)/2;
-        int Y = (dimention)/2;
+        int X = (dimension)/2;
+        int Y = (dimension)/2;
         int number = 1;
 
-        while(X < dimention && X >= 0 && Y < dimention && Y >= 0){
+        while(X < dimension && X >= 0 && Y < dimension && Y >= 0){
             for(int i = 0; i < increase; i++){
                 array[Y][X] = new Pixel(number, specialNumbers.contains(number++));
                 X = X + currentDirectionX;
@@ -56,5 +50,14 @@ public class SpiralToArray {
             currentDirectionY = currentDirectionX;
             currentDirectionX = 0;
         }
+    }
+
+    public void SetSpecialNumbers(List<Integer> list) {
+        if(list != null)
+            specialNumbers = list;
+    }
+
+    public List<Integer> GetSpecialNumbers(){
+        return specialNumbers;
     }
 }
