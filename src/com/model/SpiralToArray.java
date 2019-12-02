@@ -14,9 +14,9 @@ public class SpiralToArray implements ISpiralToArray {
     private int currentDirectionX = 0;
     private int currentDirectionY = -1;
 
-    public SpiralToArray(int dimension){
+    public SpiralToArray(){
         this.specialNumbers = new ArrayList<>();
-        this.dimension = dimension;
+        this.dimension = 10;
     }
 
     public Pixel[][] GetArray(){
@@ -59,5 +59,14 @@ public class SpiralToArray implements ISpiralToArray {
 
     public List<Integer> GetSpecialNumbers(){
         return specialNumbers;
+    }
+
+    public void SetDimension(int number) {
+        if(number > 1)
+            dimension = number;
+    }
+
+    public int GetDimension(){
+        return dimension;
     }
 }

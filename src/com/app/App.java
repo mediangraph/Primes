@@ -1,19 +1,20 @@
 package com.app;
 
+import com.controller.AppController;
 import com.model.INumberGenerator;
+import com.model.ISpiralToArray;
 import com.model.NumberGenerator;
-import com.view.DrawingControl;
+import com.model.SpiralToArray;
+import com.view.MainWindow;
 
-import javax.swing.*;
-import java.util.List;
 public class App {
 
     public static void main(String[] args) {
-       // JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("Form");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300,300);
-        frame.setVisible(true);
-        frame.getContentPane().add(new DrawingControl());
+
+        MainWindow mw = new MainWindow();
+        INumberGenerator ng = new NumberGenerator();
+        ISpiralToArray sta = new SpiralToArray();
+        AppController appController = new AppController(mw, ng, sta);
+        appController.initAppController();
     }
 }
