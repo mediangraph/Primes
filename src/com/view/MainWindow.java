@@ -8,11 +8,12 @@ public class MainWindow {
     private JTextField dim;
     private JButton gen;
     private DrawingControl df;
+    private JFrame frame;
 
     public MainWindow() {
-        JFrame frame = new JFrame("Form");
+        frame = new JFrame("Form");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(500, 500);
 
         JPanel panel = new JPanel(); // the panel is not visible in output
         JLabel label = new JLabel("Dimension: ");
@@ -23,6 +24,7 @@ public class MainWindow {
         panel.add(gen);
 
         df = new DrawingControl();
+        df.setPreferredSize(new Dimension(400,400));
 
         frame.getContentPane(). add(panel, BorderLayout.SOUTH);
         frame.getContentPane().add(df, BorderLayout.CENTER);
@@ -40,5 +42,10 @@ public class MainWindow {
 
     public DrawingControl GetDrawingControl(){
         return df;
+    }
+
+    public void SetDrawingControl(DrawingControl dc){
+        df = dc;
+        df.repaint();
     }
 }

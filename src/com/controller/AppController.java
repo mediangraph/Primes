@@ -2,10 +2,13 @@ package com.controller;
 
 import com.model.INumberGenerator;
 import com.model.ISpiralToArray;
+import com.model.Pixel;
+import com.view.DrawingControl;
 import com.view.MainWindow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class AppController {
 
@@ -30,5 +33,14 @@ public class AppController {
 
     private void generateButtonPressed(String dimension){
         System.out.println("Pyszne frytki.");
+        int dim = Integer.parseInt(dimension);
+        List<Integer> primes = numberGenerator.GeneratePrimeNumbers(dim);
+        spiralToArray.SetDimension(dim);
+        spiralToArray.SetSpecialNumbers(primes);
+        Pixel[][] array = spiralToArray.GetArray();
+        DrawingControl dc = mainWindow.GetDrawingControl();
+        dc.PixelArray = array;
+        mainWindow.SetDrawingControl(dc);
+
     }
 }
