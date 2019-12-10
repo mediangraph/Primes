@@ -34,7 +34,7 @@ public class AppController {
     private void generateButtonPressed(String dimension){
         System.out.println("Pyszne frytki.");
         int dim = Integer.parseInt(dimension);
-        List<Integer> primes = numberGenerator.GeneratePrimeNumbers(dim);
+        List<Integer> primes = numberGenerator.GeneratePrimeNumbers(dim*dim);
         spiralToArray.SetDimension(dim);
         spiralToArray.SetSpecialNumbers(primes);
         Pixel[][] array = spiralToArray.GetArray();
